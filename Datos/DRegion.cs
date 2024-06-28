@@ -1,48 +1,37 @@
-﻿using System;
+﻿using Entidad;
+using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Datos
 {
-    internal class DRegion
+    public class DRegion
     {
-        public List<Region> Listar(string Nombre)
+        public void Registrar(string Nombre, bool Activo)
         {
-            List<Region> regions = new List<Region>();
 
             using (var connection = new SqlConnection(Conexion.cadena))
             {
-                //Usar el procedimiento almacenado
-                SqlCommand cmd = new SqlCommand("SP_ReadRegions", connection);
-                cmd.CommandType = CommandType.StoredProcedure;
-
+                connection.Open();
+                SqlCommand command = new SqlCommand("USP_InsertRole", connection);
+                command.CommandType = CommandType.StoredProcedure;
 
                 //Enviar los parámetros
-                SqlParameter parameter = new SqlParameter("RegionName", SqlDbType.VarChar, 50);
+                SqlParameter parameter = new SqlParameter("@Name", SqlDbType.VarChar, 50);
                 parameter.Value = Nombre;
-                cmd.Parameters.Add(parameter);
+                command.Parameters.Add(parameter);
 
-                connection.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
+                SqlParameter parameter2 = new SqlParameter("@Enabled", SqlDbType.Bit);
+                parameter2.Value = Activo;
+                command.Parameters.Add(parameter2);
 
-                //Recorrer el data reader
-                while (reader.Read())
-                {
+                command.ExecuteNonQuery();
 
-                    int RegionId = reader["RegionId"] != DBNull.Value ? Convert.ToInt32(reader["RegionId"]) : 0;
-                    string RegionName = reader["RegionName"] != DBNull.Value ? Convert.ToString(reader["RegionName"]) : "";
-
-                    roles.Add(new Region { RegionId = RegionId, RegionName = RegionName });
-
-
-                }
-                reader.Close();
             }
-            return regions;
-
         }
     }
 }

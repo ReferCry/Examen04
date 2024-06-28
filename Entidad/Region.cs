@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.SqlClient;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,5 +11,7 @@ namespace Entidad
     {
         public int RegionId { get; set; }
         public string RegionName { get; set; }
+        public bool Enabled { get; set; }
+
     }
 }
