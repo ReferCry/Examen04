@@ -1,8 +1,7 @@
-﻿using Entidad;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +16,7 @@ namespace Datos
             using (var connection = new SqlConnection(Conexion.cadena))
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand("USP_InsertRole", connection);
+                SqlCommand command = new SqlCommand("sp_CreateRegion", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
                 //Enviar los parámetros
