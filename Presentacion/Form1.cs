@@ -20,5 +20,24 @@ namespace Presentacion
         {
 
         }
+
+        private void btnListar_Click(object sender, EventArgs e)
+        {
+            dgvRegion.DataSource = negocio.Listar(btnListar.Text);
+        }
+
+        private void btnInsertar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                negocio.Insertar(txtRegionName.Text);
+                MessageBox.Show("Registro exitoso");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Comunicarse con el Admin");
+                throw;
+            }
+        }
     }
 }

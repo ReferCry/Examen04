@@ -31,6 +31,7 @@
             dgvRegion = new DataGridView();
             btnListar = new Button();
             btnInsertar = new Button();
+            txtRegionName = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvRegion).BeginInit();
             SuspendLayout();
             // 
@@ -45,27 +46,37 @@
             // 
             // btnListar
             // 
-            btnListar.Location = new Point(52, 150);
+            btnListar.Location = new Point(311, 37);
             btnListar.Name = "btnListar";
             btnListar.Size = new Size(75, 23);
             btnListar.TabIndex = 1;
             btnListar.Text = "Listar";
             btnListar.UseVisualStyleBackColor = true;
+            btnListar.Click += btnListar_Click;
             // 
             // btnInsertar
             // 
-            btnInsertar.Location = new Point(406, 150);
+            btnInsertar.Location = new Point(421, 37);
             btnInsertar.Name = "btnInsertar";
             btnInsertar.Size = new Size(75, 23);
             btnInsertar.TabIndex = 2;
             btnInsertar.Text = "Insertar";
             btnInsertar.UseVisualStyleBackColor = true;
+            btnInsertar.Click += btnInsertar_Click;
+            // 
+            // txtRegionName
+            // 
+            txtRegionName.Location = new Point(536, 37);
+            txtRegionName.Name = "txtRegionName";
+            txtRegionName.Size = new Size(100, 23);
+            txtRegionName.TabIndex = 3;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(txtRegionName);
             Controls.Add(btnInsertar);
             Controls.Add(btnListar);
             Controls.Add(dgvRegion);
@@ -74,6 +85,7 @@
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)dgvRegion).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -81,5 +93,6 @@
         private DataGridView dgvRegion;
         private Button btnListar;
         private Button btnInsertar;
+        private TextBox txtRegionName;
     }
 }
