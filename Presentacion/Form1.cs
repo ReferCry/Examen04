@@ -30,8 +30,10 @@ namespace Presentacion
         {
             try
             {
-                negocio.Insertar(txtRegionName.Text);
-                MessageBox.Show("Registro exitoso");
+                NRegion nRegion = new NRegion();
+                Entidad.Region region = new Entidad.Region { RegionName = txtRegionName.Text };
+                nRegion.Insertar(region);
+                MessageBox.Show("Insertado exitosamente");
             }
             catch (Exception)
             {

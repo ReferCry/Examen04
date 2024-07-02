@@ -10,7 +10,7 @@ namespace Datos
 {
     public static class Conexion
     {
-        public static string cadena = "DESKTOP-E016QU1\\SQLEXPRESS;" +
+        public static string cadena = "Server = DESKTOP-E016QU1\\SQLEXPRESS;" +
                 "Initial Catalog=WICMonitoriaDBDev; Integrated Security=True; trustservercertificate=True";
 
     }

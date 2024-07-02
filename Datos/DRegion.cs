@@ -11,17 +11,17 @@ namespace Datos
 {
     public class DRegion
     {
-        public void Insertar(string Nombre)
+        public void Insertar(Region region)
         {
             using (var connection = new SqlConnection(Conexion.cadena))
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand("RSP_InsertRegion", connection);
+                SqlCommand command = new SqlCommand("USP_InsertRegion", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
                 //Enviar los parámetros
                 SqlParameter parameter = new SqlParameter("@RegionName", SqlDbType.VarChar, 50);
-                parameter.Value = Nombre;
+                parameter.Value = region.RegionName;
                 command.Parameters.Add(parameter);
 
                 /*
@@ -40,7 +40,7 @@ namespace Datos
 
             using (var connection = new SqlConnection(Conexion.cadena))
             {
-                //Usar el procedimiento almacenado
+                connection.Open();
                 SqlCommand cmd = new SqlCommand("SP_ReadRegions", connection);
                 cmd.CommandType = CommandType.StoredProcedure;
 
@@ -52,7 +52,7 @@ namespace Datos
                 cmd.Parameters.Add(parameter);
                 */
 
-                connection.Open();
+                
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 //Recorrer el data reader
